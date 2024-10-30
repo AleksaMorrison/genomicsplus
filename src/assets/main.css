@@ -1,0 +1,36 @@
+@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Figtree", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: var(--dark-background);
+  display: grid;
+  grid-template-rows: 1fr 1fr min-content;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+
+  #app {
+    display: grid;
+    grid-template-rows: 500px 1fr 500px;
+  }
+}
