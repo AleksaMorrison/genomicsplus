@@ -102,7 +102,8 @@ export default {
         animation: rainbow 2s ease-in-out infinite;
 
         &:hover {
-            background-color: var(--light-text);
+            background: linear-gradient(to right, #f9f871,#00d5e6 51%,#da7df0, #ffc75f);
+            background-clip: text;
             color: var(--dark-gray);
         }
 

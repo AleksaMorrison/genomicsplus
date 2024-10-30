@@ -6,7 +6,7 @@ import { ref,onMounted,onUnmounted } from 'vue';
 const isMobile = ref(false);
 
 const checkScreen = () => {
-  if (window.innerWidth <= 1024) {
+  if (window.innerWidth <= 768) {
     isMobile.value = true;
   } else {
     isMobile.value = false;
@@ -47,7 +47,7 @@ onUnmounted(() => {
   backdrop-filter: blur(15px);
   border: 1px solid var(--dark-gray);
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     border-radius: 50px;
     padding: 10px 30px;
     border: 1px solid var(--dark-gray);
@@ -60,6 +60,7 @@ onUnmounted(() => {
     width: 100%;
     align-items: center;
     gap: 20px;
+    
 
     & a {
       color: var(--light-text);
@@ -68,7 +69,7 @@ onUnmounted(() => {
         color: var(--lighter-text);
       }
 
-      @media (min-width: 1024px) {
+      @media (min-width: 768px) {
         padding: 10px 20px;
       }
 
@@ -109,13 +110,17 @@ onUnmounted(() => {
     & .logo {
       flex-grow: 1;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       background: linear-gradient(to right,#ffc75f, #da7df0 ,#00d5e6 51%, #f9f871);
       background-clip: text;
       -webkit-text-fill-color: transparent;
       transition: background 0.3s;
       background-size: 200% 200%;
       animation: rainbow 2s ease-in-out infinite;
+      
+      @media (min-width: 768px) {
+        justify-content: flex-start;
+      }
 
       &:hover {
         background: linear-gradient(90deg #00d5e6 51%, #f9f871);
@@ -127,7 +132,7 @@ onUnmounted(() => {
         background: none;
         font-weight: 500;
         font-size: 32px;
-        @media (min-width: 1024px) {
+        @media (min-width: 768px) {
           font-size: 40px;
         }
       }

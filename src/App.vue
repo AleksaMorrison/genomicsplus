@@ -3,6 +3,26 @@ import HeaderNav from './components/HeaderNav.vue'
 import TheSpace from './components/TheSpace.vue'
 import TheInfoBlock from './components/TheInfoBlock.vue';
 import TheFooter from './components/TheFooter.vue';
+import { ref,onMounted,onUnmounted } from 'vue';
+
+const isMobile = ref(false);
+
+const checkScreen = () => {
+  if (window.innerWidth <= 768) {
+    isMobile.value = true;
+  } else {
+    isMobile.value = false;
+  }
+}
+
+onMounted(() => {
+  checkScreen();
+  window.addEventListener('resize', checkScreen); 
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkScreen);
+});
 </script>
 
 <template>
@@ -27,10 +47,62 @@ import TheFooter from './components/TheFooter.vue';
       <TheFooter/>
     </TheSpace>   
   </footer>
-  
+  <div class="fab" v-if="isMobile">
+    <div class="fab-wrapper">
+      <a href="#" class="cta-button">Contact Us</a>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
+.fab {
+  position: fixed;
+  bottom: 20px;
+  z-index: 1000;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  & .fab-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-background);
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    & .cta-button {
+      background: linear-gradient(to right,#ffc75f, #da7df0 ,#00d5e6 51%, #f9f871);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      color:var(--light-text);
+      transition: color .2s ease-in-out;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 8px;
+      border:  1px solid var(--light-text);
+      width: 200px;
+      align-self: center;
+      font-size: 16px;
+      padding: 5px 10px;
+      transition: background 0.3s;
+      animation: rainbow 2s ease-in-out infinite;
+
+      &:hover {
+        background: linear-gradient(to right, #f9f871,#00d5e6 51%,#da7df0, #ffc75f);
+        background-clip: text;
+        color: var(--dark-gray);
+      }
+
+      @media (min-width: 768) {
+        font-size: 20px;
+        padding: 10px 20px;
+      }
+    }
+  }
+}
 .hero {
   position: relative;
   display: flex;
